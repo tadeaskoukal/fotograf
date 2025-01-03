@@ -11,7 +11,7 @@ let currentIndex = 0;
 galleryItems.forEach((item, index) => {
     item.addEventListener('click', () => {
         lightbox.style.display = 'block';
-        lightboxContent.src = item.src;
+        lightboxContent.src = item.getAttribute('data-full');
         currentIndex = index;
     });
 });
@@ -24,13 +24,13 @@ closeBtn.addEventListener('click', () => {
 // Navigate to the previous image
 prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    lightboxContent.src = galleryItems[currentIndex].src;
+    lightboxContent.src = galleryItems[currentIndex].getAttribute('data-full');
 });
 
 // Navigate to the next image
 nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % galleryItems.length;
-    lightboxContent.src = galleryItems[currentIndex].src;
+    lightboxContent.src = galleryItems[currentIndex].getAttribute('data-full');
 });
 
 // Close lightbox when clicking outside the image
